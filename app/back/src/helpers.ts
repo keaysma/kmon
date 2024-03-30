@@ -4,7 +4,7 @@ export const isSubset = (a: Record<string, string>, b: Record<string, string>): 
     )
 }
 
-export const checkMatchExpressions = (matchExpressions: any, podLabels: any): boolean => false
+export const checkMatchExpressions = (matchExpressions: any, podLabels: any): boolean => true
 
 // Experimental, and, seemingly wrong, use isSubset above
 export const checkMatchLabels = (matchLabels: Record<string, string>, rawPodLabels: Record<string, string>): boolean => {
