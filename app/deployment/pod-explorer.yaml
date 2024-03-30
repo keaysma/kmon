@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kmon-dev
+spec:
+  serviceAccountName: kmon-api
+  containers:
+  - name: dev
+    image: localhost:5000/kmon:latest
+    imagePullPolicy: Always
+    command: ["sleep"]
+    args: ["infinity"]
