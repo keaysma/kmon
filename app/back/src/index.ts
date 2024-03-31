@@ -1,6 +1,6 @@
 import express from 'express';
 import { getApi, getPods, getDeployments } from './kube-api';
-import { checkMatchLabels, isSubset } from './helpers'
+import { checkMatchLabels } from './helpers'
 import { HTTP_PORT } from './env';
 
 const app = express();
@@ -57,7 +57,7 @@ router.get('/deployments', async (req, res) => {
 	    "replicas": item.spec.replicas,
 	    "selector": item.spec.selector,
             // "pods": pods.filter((pod: any) => checkMatchLabels(item.spec.selector.matchLabels, pod.labels)),
-            "pods": pods.filter((pod: any) => isSubset(item.spec.selector.matchLabels, pod.labels)),
+            "pods": pods.filter((pod: any) => checkMatchLabels(item.spec.selector.matchLabels, pod.labels)),
         }))
         res.status(200).json(deployments);
     } catch (e) {
